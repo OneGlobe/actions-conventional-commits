@@ -6,6 +6,9 @@ import extractCommits from "./extractCommits";
 
 export async function run() {
   try {
+    const allowMergeCommits = core.getBooleanInput("allow-merge-commits");
+    const allowReapplyCommits = core.getBooleanInput("allow-reapply-commits");
+    const allowRevertCommits = core.getBooleanInput("allow-revert-commits");
     const allowedCommitTypes = core.getInput("allowed-commit-types").split(",");
     const includeCommits = core.getBooleanInput("include-commits");
     const includePullRequestTitle = core.getBooleanInput("include-pull-request-title");
@@ -14,10 +17,18 @@ export async function run() {
       core.info("🔎 Analyzing pull request title:");
       const pullRequest = context.payload.pull_request;
       if (!pullRequest) {
-        core.info("No pull request found, skipping title check");
+        core.setFailed("No pull request found");
         return;
       }
-      if (isValidCommitMessage(pullRequest.title, allowedCommitTypes, true, false, false)) {
+      if (
+        isValidCommitMessage(
+          pullRequest.title,
+          allowedCommitTypes,
+          allowMergeCommits,
+          allowRevertCommits,
+          allowReapplyCommits
+        )
+      ) {
         core.info(`✅ ${pullRequest.title}`);
       } else {
         core.setFailed(

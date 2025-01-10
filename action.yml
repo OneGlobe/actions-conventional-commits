@@ -14,7 +14,23 @@ inputs:
     required: false
   include-commits:
     description: "Ensure the commit messages follow the conventional-commits standard"
+    default: "false"
+    required: false
+  allow-merge-commits:
+    description: "Allows `Merge pull request` commits"
     default: "true"
+    required: false
+  allow-revert-commits:
+    description: "Allows `Revert` commits"
+    default: "false"
+    required: false
+  allow-reapply-commits:
+    description: "Allows `Reapply` commits"
+    default: "false"
+    required: false
+  failure-message:
+    description: "The message to show when a commit does not follow the conventional-commits standard"
+    default: "❌ Commit does not follow the conventional-commits standard"
     required: false
 
 runs:
