@@ -23,7 +23,7 @@ jobs:
           manifest-file: .github/release-please-manifest.json
           token: ${{ secrets.BOT_PAT }}
 
-     - if: steps.release.outputs.release_created
+      - if: steps.release.outputs.release_created
         name: Checkout
         uses: actions/checkout@v3
         with:
