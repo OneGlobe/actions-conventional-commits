@@ -23,6 +23,7 @@ const mockCore = {
   getBooleanInput: jest.fn(),
   setFailed: jest.fn(),
   info: jest.fn(),
+  error: jest.fn(),
 };
 
 // Set up the core mock implementation
@@ -31,6 +32,7 @@ jest.mock("@actions/core", () => ({
   getBooleanInput: mockCore.getBooleanInput,
   setFailed: mockCore.setFailed,
   info: mockCore.info,
+  error: mockCore.error,
 }));
 
 describe("main", () => {
@@ -135,6 +137,46 @@ describe("main", () => {
 
       expect(mockCore.info).toHaveBeenCalledWith("✅ feat: test pull request");
       expect(mockCore.info).toHaveBeenCalledWith("✅ feat: test commit");
+    });
+
+    test("should use custom failure message when provided", async () => {
+      const customFailureMessage = "Custom failure message";
+      mockCore.getInput.mockImplementation((input) => {
+        if (input === "failure-message") return customFailureMessage;
+        if (input === "allowed-commit-types") return "feat,fix";
+        return "";
+      });
+      mockCore.getBooleanInput.mockImplementation((input) => input === "include-commits");
+      
+      const mockCommits = [{ message: "invalid commit message" }];
+      (extractCommits as jest.Mock).mockResolvedValue(mockCommits);
+      (isValidCommitMessage as jest.Mock).mockReturnValue(false);
+
+      await require("../main").run();
+
+      expect(mockCore.setFailed).toHaveBeenCalledWith(
+        "❌ invalid commit message cannot be parsed as a valid conventional commit message."
+      );
+      expect(mockCore.setFailed).toHaveBeenLastCalledWith(customFailureMessage);
+    });
+
+    test("should use default failure message when not provided", async () => {
+      mockCore.getInput.mockImplementation((input) => {
+        if (input === "failure-message") return "❌ One or more commits do not follow the conventional commits specification";
+        if (input === "allowed-commit-types") return "feat,fix";
+        return "";
+      });
+      mockCore.getBooleanInput.mockImplementation((input) => input === "include-commits");
+      
+      const mockCommits = [{ message: "invalid commit message" }];
+      (extractCommits as jest.Mock).mockResolvedValue(mockCommits);
+      (isValidCommitMessage as jest.Mock).mockReturnValue(false);
+
+      await require("../main").run();
+
+      expect(mockCore.setFailed).toHaveBeenLastCalledWith(
+        "❌ One or more commits do not follow the conventional commits specification"
+      );
     });
   });
 

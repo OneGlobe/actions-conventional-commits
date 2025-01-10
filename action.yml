@@ -29,8 +29,8 @@ inputs:
     default: "false"
     required: false
   failure-message:
-    description: "The message to show when a commit does not follow the conventional-commits standard"
-    default: "❌ Commit does not follow the conventional-commits standard"
+    description: "The message to show when commits do not follow the conventional commits specification"
+    default: "❌ One or more commits do not follow the conventional commits specification"
     required: false
 
 runs:

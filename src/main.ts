@@ -5,13 +5,17 @@ import isValidCommitMessage from "./isValidCommitMesage";
 import extractCommits from "./extractCommits";
 
 export async function run() {
-  try {
     const allowMergeCommits = core.getBooleanInput("allow-merge-commits");
     const allowReapplyCommits = core.getBooleanInput("allow-reapply-commits");
     const allowRevertCommits = core.getBooleanInput("allow-revert-commits");
     const allowedCommitTypes = core.getInput("allowed-commit-types").split(",");
+    const failureMessage = core.getInput("failure-message");
     const includeCommits = core.getBooleanInput("include-commits");
     const includePullRequestTitle = core.getBooleanInput("include-pull-request-title");
+
+    let hasFailed = false;
+
+  try {
 
     if (includePullRequestTitle) {
       core.info("🔎 Analyzing pull request title:");
@@ -34,6 +38,7 @@ export async function run() {
         core.setFailed(
           `❌ ${pullRequest.title} cannot be parsed as a valid conventional commit message.`
         );
+        hasFailed = true;
       }
     }
 
@@ -48,15 +53,17 @@ export async function run() {
           core.setFailed(
             `❌ ${commit.message} cannot be parsed as a valid conventional commit message.`
           );
+          hasFailed = true;
         }
       }
     }
-  } catch (error) {
-    if (error instanceof Error) {
-      core.setFailed(error.message);
-    } else {
-      core.setFailed('An unknown error occurred');
+
+    if (hasFailed) {
+      core.setFailed(failureMessage);
     }
+  } catch (error) {
+    core.error(error as Error);
+    core.setFailed((error as Error).message);
   }
 }
 
