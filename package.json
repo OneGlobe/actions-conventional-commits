@@ -1,9 +1,10 @@
 {
   "name": "action-conventional-commits",
-  "version": "1.0.0",
+  "version": "1.4.0",
   "main": "index.js",
-  "repository": "git@github.com:doitadrian/action-conventional-commits.git",
-  "author": "Adrian Smijulj <adrian1358@gmail.com>",
+  "homepage": "github.com/oneglobe/action-conventional-commits#readme",
+  "repository": "github.com/oneglobe/action-conventional-commits",
+  "author": "OneGlobe, LLC",
   "license": "MIT",
   "dependencies": {
     "@actions/core": "^1.2.3",
@@ -27,5 +28,6 @@
     "build": "ncc build src/main.ts --out dist/main",
     "watch": "ncc build src/main.ts --out dist/main --watch",
     "test": "jest"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }
