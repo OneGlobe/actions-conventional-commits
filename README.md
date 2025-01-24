@@ -20,7 +20,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: doomspork/action-conventional-commits@v1.4
+      - uses: doomspork/actions-conventional-commits@v1.4
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }} # Optional, for private repositories.
           allowed-commit-types: "feat,fix" # Optional, set if you want a subset of commit types to be allowed.
