@@ -1,5 +1,5 @@
 {
-  "name": "action-conventional-commits",
+  "name": "actions-conventional-commits",
   "version": "1.4.0",
   "main": "index.js",
   "homepage": "github.com/oneglobe/action-conventional-commits#readme",

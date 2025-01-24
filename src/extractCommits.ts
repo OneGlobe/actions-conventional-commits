@@ -19,8 +19,8 @@ const extractCommits = async (context, core): Promise<Commit[]> => {
             let requestHeaders = {
                 "Accept": "application/vnd.github+json",
             }
-            if (core.getInput('GITHUB_TOKEN') != "") {
-                requestHeaders["Authorization"] = "token " + core.getInput('GITHUB_TOKEN')
+            if (core.getInput('github-token') != "") {
+                requestHeaders["Authorization"] = "token " + core.getInput('github-token')
             }
             const { body } = await got.get(prCommitsUrl, {
                 responseType: "json",
