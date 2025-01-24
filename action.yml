@@ -1,7 +1,7 @@
 name: "Conventional Commits"
 description: "Ensures that all commit messages are following the conventional-commits standard."
 inputs:
-  GITHUB_TOKEN:
+  github-token:
     description: 'GitHub token'
     required: false
   allowed-commit-types:

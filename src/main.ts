@@ -9,9 +9,11 @@ async function run() {
     const includePullRequestTitle = core.getBooleanInput("include-pull-request-title");
 
     let hasErrors = false;
-    
+
     if (includePullRequestTitle) {
-        core.info("ℹ️ Checking pull request title is following the Conventional Commits specification...");
+        core.info(
+            "ℹ️ Checking pull request title is following the Conventional Commits specification..."
+        );
 
         const pullRequestTitle = context.payload.pull_request.title;
         if (isValidCommitMessage(pullRequestTitle, allowedCommitTypes)) {
@@ -22,7 +24,9 @@ async function run() {
         }
     }
 
-    core.info("ℹ️ Checking if commit messages are following the Conventional Commits specification...");
+    core.info(
+        "ℹ️ Checking if commit messages are following the Conventional Commits specification..."
+    );
 
     const extractedCommits = await extractCommits(context, core);
     if (extractedCommits.length === 0) {
@@ -44,7 +48,9 @@ async function run() {
     core.endGroup();
 
     if (hasErrors) {
-        core.setFailed("🚫 According to the conventional-commits specification, some of the commit messages are not valid.");
+        core.setFailed(
+            "🚫 According to the conventional-commits specification, some of the commit messages are not valid."
+        );
     } else {
         core.info("🎉 All commit messages are following the Conventional Commits specification.");
     }
