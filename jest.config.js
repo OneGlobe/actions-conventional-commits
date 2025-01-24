@@ -1,5 +1,5 @@
 module.exports = {
-    clearMocks: true,
-    coverageDirectory: "coverage",
-    testEnvironment: "node",
+  clearMocks: true,
+  coverageDirectory: "coverage",
+  testEnvironment: "node",
 };
