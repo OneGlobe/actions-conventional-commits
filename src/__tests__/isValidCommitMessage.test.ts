@@ -32,28 +32,28 @@ describe("isValidCommitMessage", () => {
       expect(isValidCommitMessage("feat(ui): add button", types, false, false, false)).toBe(true);
       expect(isValidCommitMessage("fix(api): fix endpoint", types, false, false, false)).toBe(true);
       expect(
-        isValidCommitMessage("chore(deps): update dependencies", types, false, false, false)
+        isValidCommitMessage("chore(deps): update dependencies", types, false, false, false),
       ).toBe(true);
     });
 
     test("should validate scopes with numbers and hyphens", () => {
       expect(isValidCommitMessage("feat(ui-123): new feature", types, false, false, false)).toBe(
-        true
+        true,
       );
       expect(isValidCommitMessage("fix(api-v2): fix endpoint", types, false, false, false)).toBe(
-        true
+        true,
       );
     });
 
     test("should reject invalid scope formats", () => {
       expect(isValidCommitMessage("feat(UI): invalid caps", types, false, false, false)).toBe(
-        false
+        false,
       );
       expect(
-        isValidCommitMessage("fix(api_test): invalid underscore", types, false, false, false)
+        isValidCommitMessage("fix(api_test): invalid underscore", types, false, false, false),
       ).toBe(false);
       expect(
-        isValidCommitMessage("feat((double)): double parentheses", types, false, false, false)
+        isValidCommitMessage("feat((double)): double parentheses", types, false, false, false),
       ).toBe(false);
     });
   });
@@ -62,7 +62,7 @@ describe("isValidCommitMessage", () => {
     test("should validate breaking change indicator", () => {
       expect(isValidCommitMessage("feat!: breaking change", types, false, false, false)).toBe(true);
       expect(isValidCommitMessage("fix(api)!: breaking fix", types, false, false, false)).toBe(
-        true
+        true,
       );
     });
 
@@ -73,8 +73,8 @@ describe("isValidCommitMessage", () => {
           types,
           false,
           false,
-          false
-        )
+          false,
+        ),
       ).toBe(true);
     });
   });
@@ -87,8 +87,8 @@ describe("isValidCommitMessage", () => {
           types,
           false,
           false,
-          false
-        )
+          false,
+        ),
       ).toBe(true);
     });
 
@@ -99,8 +99,8 @@ describe("isValidCommitMessage", () => {
           types,
           false,
           false,
-          false
-        )
+          false,
+        ),
       ).toBe(true);
     });
   });
@@ -123,7 +123,7 @@ describe("isValidCommitMessage", () => {
       expect(isValidCommitMessage("feat(: invalid scope", types, false, false, false)).toBe(false);
       expect(isValidCommitMessage("feat): invalid scope", types, false, false, false)).toBe(false);
       expect(
-        isValidCommitMessage("feat(scope: missing parenthesis", types, false, false, false)
+        isValidCommitMessage("feat(scope: missing parenthesis", types, false, false, false),
       ).toBe(false);
     });
   });
@@ -133,25 +133,25 @@ describe("isValidCommitMessage", () => {
     test("should handle merge commits", () => {
       expect(isValidCommitMessage("Merge pull request #123", types, true, false, false)).toBe(true);
       expect(isValidCommitMessage("Merge pull request #123", types, false, false, false)).toBe(
-        false
+        false,
       );
     });
 
     test("should handle revert commits", () => {
       expect(
-        isValidCommitMessage('Revert "feat: previous feature"', types, false, true, false)
+        isValidCommitMessage('Revert "feat: previous feature"', types, false, true, false),
       ).toBe(true);
       expect(
-        isValidCommitMessage('Revert "feat: previous feature"', types, false, false, false)
+        isValidCommitMessage('Revert "feat: previous feature"', types, false, false, false),
       ).toBe(false);
     });
 
     test("should handle reapply commits", () => {
       expect(
-        isValidCommitMessage('Reapply "feat: previous feature"', types, false, false, true)
+        isValidCommitMessage('Reapply "feat: previous feature"', types, false, false, true),
       ).toBe(true);
       expect(
-        isValidCommitMessage('Reapply "feat: previous feature"', types, false, false, false)
+        isValidCommitMessage('Reapply "feat: previous feature"', types, false, false, false),
       ).toBe(false);
     });
   });

@@ -2,7 +2,7 @@ const isException = (
   message: string,
   allowMergeCommits: boolean,
   allowRevertCommits: boolean,
-  allowReapplyCommits: boolean
+  allowReapplyCommits: boolean,
 ): boolean => {
   if (allowMergeCommits && message.startsWith("Merge ")) {
     return true;
@@ -22,7 +22,7 @@ const isValidCommitMessage = (
   availableTypes: string[] = [],
   allowMergeCommits: boolean,
   allowRevertCommits: boolean,
-  allowReapplyCommits: boolean
+  allowReapplyCommits: boolean,
 ): boolean => {
   if (isException(message, allowMergeCommits, allowRevertCommits, allowReapplyCommits)) {
     return true;
@@ -35,7 +35,7 @@ const isValidCommitMessage = (
       `(?:!)?` + // optional breaking change indicator
       `: ` + // required colon and space
       `.+` + // required subject (at least one character)
-      `(?:\n\n[\\s\\S]*)?$` // optional body/footer (any content after double newline)
+      `(?:\n\n[\\s\\S]*)?$`, // optional body/footer (any content after double newline)
   );
 
   let match = message.match(pattern);

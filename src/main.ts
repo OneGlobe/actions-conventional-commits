@@ -5,18 +5,17 @@ import isValidCommitMessage from "./isValidCommitMesage";
 import extractCommits from "./extractCommits";
 
 export async function run() {
-    const allowMergeCommits = core.getBooleanInput("allow-merge-commits");
-    const allowReapplyCommits = core.getBooleanInput("allow-reapply-commits");
-    const allowRevertCommits = core.getBooleanInput("allow-revert-commits");
-    const allowedCommitTypes = core.getInput("allowed-commit-types").split(",");
-    const failureMessage = core.getInput("failure-message");
-    const includeCommits = core.getBooleanInput("include-commits");
-    const includePullRequestTitle = core.getBooleanInput("include-pull-request-title");
+  const allowMergeCommits = core.getBooleanInput("allow-merge-commits");
+  const allowReapplyCommits = core.getBooleanInput("allow-reapply-commits");
+  const allowRevertCommits = core.getBooleanInput("allow-revert-commits");
+  const allowedCommitTypes = core.getInput("allowed-commit-types").split(",");
+  const failureMessage = core.getInput("failure-message");
+  const includeCommits = core.getBooleanInput("include-commits");
+  const includePullRequestTitle = core.getBooleanInput("include-pull-request-title");
 
-    let hasFailed = false;
+  let hasFailed = false;
 
   try {
-
     if (includePullRequestTitle) {
       core.info("🔎 Analyzing pull request title:");
       const pullRequest = context.payload.pull_request;
@@ -30,13 +29,13 @@ export async function run() {
           allowedCommitTypes,
           allowMergeCommits,
           allowRevertCommits,
-          allowReapplyCommits
+          allowReapplyCommits,
         )
       ) {
         core.info(`✅ ${pullRequest.title}`);
       } else {
         core.setFailed(
-          `❌ ${pullRequest.title} cannot be parsed as a valid conventional commit message.`
+          `❌ ${pullRequest.title} cannot be parsed as a valid conventional commit message.`,
         );
         hasFailed = true;
       }
@@ -51,7 +50,7 @@ export async function run() {
           core.info(`✅ ${commit.message}`);
         } else {
           core.setFailed(
-            `❌ ${commit.message} cannot be parsed as a valid conventional commit message.`
+            `❌ ${commit.message} cannot be parsed as a valid conventional commit message.`,
           );
           hasFailed = true;
         }
