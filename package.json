@@ -11,7 +11,7 @@
     "@actions/exec": "^1.0.3",
     "@actions/github": "^6.0.0",
     "@types/got": "^9.6.12",
-    "ky": "^1.8.0",
+    "ky": "^1.8.1",
     "lodash.get": "^4.4.2"
   },
   "devDependencies": {
