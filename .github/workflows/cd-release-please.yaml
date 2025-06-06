@@ -20,14 +20,14 @@ jobs:
         with:
           config-file: .github/release-please-config.json
           manifest-file: .github/release-please-manifest.json
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
 
       - if: steps.release.outputs.release_created
         name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ steps.release.outputs.tag_name }}
-          token: ${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           persist-credentials: true
 
       - if: steps.release.outputs.release_created
