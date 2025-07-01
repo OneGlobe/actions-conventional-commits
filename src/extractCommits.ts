@@ -1,4 +1,4 @@
-import get from "lodash.get";
+import get from "dash-get";
 import ky from "ky";
 import { Context } from "@actions/github/lib/context";
 import * as core from "@actions/core";
