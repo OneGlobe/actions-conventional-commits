@@ -2183,10 +2183,10 @@ jsonc-parser@^3.2.0:
   resolved "https://registry.yarnpkg.com/jsonc-parser/-/jsonc-parser-3.3.1.tgz#f2a524b4f7fd11e3d791e559977ad60b98b798b4"
   integrity sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ==
 
-ky@^1.8.1:
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/ky/-/ky-1.8.1.tgz#b1adaa473bc30aced2bab4c408ec177b78d198f0"
-  integrity sha512-7Bp3TpsE+L+TARSnnDpk3xg8Idi8RwSLdj6CMbNWoOARIrGrbuLGusV0dYwbZOm4bB3jHNxSw8Wk/ByDqJEnDw==
+ky@^1.8.2:
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/ky/-/ky-1.8.2.tgz#161cba76e4a86b43829565b9a9c8d21d03e602db"
+  integrity sha512-XybQJ3d4Ea1kI27DoelE5ZCT3bSJlibYTtQuMsyzKox3TMyayw1asgQdl54WroAm+fIA3ZCr8zXW2RpR7qWVpA==
 
 leven@^3.1.0:
   version "3.1.0"
