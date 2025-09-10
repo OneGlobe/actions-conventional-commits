@@ -11,7 +11,7 @@
     "@actions/exec": "^1.1.1",
     "@actions/github": "^6.0.1",
     "@types/got": "^9.6.12",
-    "ky": "^1.8.2",
+    "ky": "^1.9.1",
     "dash-get": "^1.0.2"
   },
   "devDependencies": {
