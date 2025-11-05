@@ -20,7 +20,6 @@ const extractCommits = async (context: Context): Promise<Commit[]> => {
     try {
       const requestHeaders = {
         accept: "application/vnd.github+json",
-        authorization: `token ${core.getInput("github-token")}`,
       };
 
       const response = await ky

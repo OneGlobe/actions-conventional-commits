@@ -17,30 +17,5 @@ jobs:
       - uses: actions/checkout@v5
       - uses: doomspork/actions-conventional-commits@latest
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           include-pull-request-title: true
-          allowed-commit-types: "fix,feat,chore,docs"
-
-  assign-labels:
-    name: Assign labels
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v5
-      - uses: mauroalderete/action-assign-labels@v1
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          conventional-commits: |
-            conventional-commits:
-              - type: 'fix'
-                nouns: ['FIX', 'Fix', 'fix']
-                labels: ['bug']
-              - type: 'feature'
-                nouns: ['FEAT', 'Feat', 'feat']
-                labels: ['feature']
-              - type: 'chore'
-                nouns: ['CHORE', 'Chore', 'chore']
-                labels: ['chore']
-              - type: 'docs'
-                nouns: ['DOCS', 'Docs', 'docs']
-                labels: ['documentation']
+          allowed-commit-types: "fix,feat,chore,docs,refactor"
