@@ -18,7 +18,7 @@ jobs:
       - uses: doomspork/actions-conventional-commits@latest
         with:
           include-pull-request-title: true
-          allowed-commit-types: "fix,feat,chore,docs"
+          allowed-commit-types: "fix,feat,chore,docs,refactor"
 
   assign-labels:
     name: Assign labels
