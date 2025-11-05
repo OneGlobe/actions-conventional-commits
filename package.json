@@ -15,10 +15,10 @@
     "dash-get": "^1.0.2"
   },
   "devDependencies": {
-    "@swc/core": "^1.13.5",
+    "@swc/core": "^1.14.0",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
-    "@types/node": "^24.6.1",
+    "@types/node": "^24.9.2",
     "@vercel/ncc": "^0.38.4",
     "jest": "^30.2.0",
     "prettier": "^3.6.2",
