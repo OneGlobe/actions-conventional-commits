@@ -1,9 +1,6 @@
 name: "Conventional Commits"
 description: "Ensures that all commit messages are following the conventional-commits standard."
 inputs:
-  github-token:
-    description: "GitHub token"
-    required: false
   allowed-commit-types:
     description: "Specify a comma separated list of allowed commit types"
     default: "build,chore,ci,docs,feat,fix,merge,perf,refactor,revert,style,test,wip"

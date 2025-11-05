@@ -22,7 +22,6 @@ jobs:
 
       - uses: doomspork/actions-conventional-commits@v1.4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }} # Optional, for private repositories.
           allowed-commit-types: "feat,fix" # Optional, set if you want a subset of commit types to be allowed.
           include-pull-request-title: true # Optional, set if you want to validate the pull request title.
           include-commits: false # Optional, set to false if you want to ignore commit messages.
