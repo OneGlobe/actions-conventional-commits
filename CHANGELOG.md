@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/OneGlobe/actions-conventional-commits/compare/v1.5.0...v1.6.0) (2025-12-08)
+
+
+### Features
+
+* Eliminate `github-token` option ([#42](https://github.com/OneGlobe/actions-conventional-commits/issues/42)) ([e7115e6](https://github.com/OneGlobe/actions-conventional-commits/commit/e7115e65b4f923f617ecfdf95f133fdcb01d7bfd))
+
 ## [1.5.0](https://github.com/doomspork/actions-conventional-commits/compare/v1.4.0...v1.5.0) (2025-01-24)
 
 
