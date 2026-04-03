@@ -1,6 +1,6 @@
 {
   "name": "actions-conventional-commits",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "main": "index.js",
   "homepage": "github.com/oneglobe/actions-conventional-commits#readme",
   "repository": "github.com/oneglobe/actions-conventional-commits",
