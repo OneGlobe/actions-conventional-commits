@@ -15,14 +15,14 @@
     "dash-get": "^1.0.2"
   },
   "devDependencies": {
-    "@swc/core": "^1.15.21",
+    "@swc/core": "^1.15.43",
     "@swc/jest": "^0.2.39",
     "@types/jest": "^30.0.0",
-    "@types/node": "^25.5.0",
-    "@vercel/ncc": "^0.38.4",
-    "jest": "^30.3.0",
-    "prettier": "^3.8.1",
-    "typescript": "^6.0.2"
+    "@types/node": "^26.0.1",
+    "@vercel/ncc": "^0.44.1",
+    "jest": "^30.4.2",
+    "prettier": "^3.9.4",
+    "typescript": "^6.0.3"
   },
   "scripts": {
     "build": "ncc build src/main.ts --out dist/main",
